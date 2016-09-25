@@ -1,0 +1,28 @@
+.header {
+  composes: inputContainer from "./shared.css";
+  display: flex;
+  height: 45px;
+  margin: auto;
+  text-align: center;
+  border-bottom: thin solid #cfd8dc;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #4f5b66;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.icon {
+  composes: icon from "./shared.css";
+  font-size: 10px;
+  line-height: 1.6;
+  width: 10px;
+  height: 10px;
+  margin: 0 12px 0 30px;
+}
+
+.identity {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #ffffff;
+}

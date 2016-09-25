@@ -1,0 +1,21 @@
+.form {
+  margin: 7px 0;
+}
+
+.input {
+  width: 205px;
+  padding: 7px;
+}
+
+.hide {
+  line-height: 0.7;
+  color: transparent;
+  background-color: transparent;
+}
+
+.form button:last-child {
+  float: right;
+  margin-right: 7px;
+  color: #ffffff;
+  background-color: #65737e;
+}

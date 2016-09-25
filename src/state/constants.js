@@ -1,0 +1,5 @@
+export const SET_NAME = 'SET_NAME'
+export const RECEIVE_COLOR = 'RECEIVE_COLOR'
+export const MESSAGE_HISTORY = 'MESSAGE_HISTORY'
+export const SEND_MESSAGE = 'SEND_MESSAGE'
+export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE'

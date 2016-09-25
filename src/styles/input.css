@@ -1,0 +1,32 @@
+.form {
+  composes: inputContainer boxShadow from "./shared.css";
+  display: flex;
+  height: 90px;
+  margin: auto;
+  border-top: thin solid #cfd8dc;
+  background-color: #eceff1;
+  align-items: center;
+  justify-content: center;
+}
+
+.input,
+.button {
+  height: 50%;
+}
+
+.input {
+  width: 70%;
+}
+
+.button {
+  background-color: #4F5B66;
+  color: white;
+  width: 15%;
+}
+
+@media (max-width: 768px) {
+  .button {
+    font-size: 14px;
+    width: 20%;
+  }
+}

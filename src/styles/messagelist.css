@@ -1,0 +1,29 @@
+.list {
+  composes: messageContainer boxShadow from "./shared.css";
+  display: block;
+  overflow-y: scroll;
+  height: 65vh;
+  margin: auto;
+  list-style: none;
+  overflow-wrap: break-word;
+}
+
+.list div {
+  padding: 3px 5px;
+  border-top: 0.8px solid rgba(0, 0, 0, 0.2);
+}
+
+.list div:nth-child(-n+4) {
+  border: none;
+  border-bottom: 0.8px solid rgba(0, 0, 0, 0.2);
+}
+
+.list div:nth-child(5) {
+  border: none;
+}
+
+@media (max-width: 600px) {
+  .list div {
+    padding: 3px;
+  }
+}

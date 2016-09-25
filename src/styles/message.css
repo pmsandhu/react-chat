@@ -1,0 +1,44 @@
+.initial {
+  composes: icon from "./shared.css";
+  font-size: 14px;
+  line-height: 2.1;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  margin-left: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.name {
+  font-weight: bolder;
+  margin-left: 5px;
+}
+
+.date::before {
+  font-weight: bold;
+  content: "@ ";
+  color: #ab7967;
+}
+
+.text {
+  margin-top: 3px;
+  margin-left: 50px;
+}
+
+.left {
+  display: block;
+  margin: 0;
+  padding: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* technical interview
+   phone interviews
+   chat
+   erin will be in touch with what next steps are in process
+   talk to you soon
+
+*/

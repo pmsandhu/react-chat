@@ -1,0 +1,151 @@
+/* HTML Elements Defaults
+   ========================================================================== */
+/**
+ * NOTE: Cannot use css-loader composes syntax with HTML tag elements : (
+ */
+body,
+html {
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  color: #1b2b34;
+}
+
+span {
+  margin: 2px;
+  padding: 2px;
+}
+
+div {
+  margin: 2px;
+  padding: 2px;
+}
+
+h {
+  font-size: 16px;
+  margin: 2px;
+  padding: 2px;
+}
+
+form {
+  margin: 2px;
+  padding: 2px;
+}
+
+button {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 4px 2px;
+  padding: 5px 10px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  outline: 0;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #65737e;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+  0 3px 1px -2px rgba(0, 0, 0, 0.2),
+  0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+button:active {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+input {
+  margin: 4px 2px;
+  padding: 0.5rem 0.75rem;
+  color: #55595c;
+  border: thin solid rgba(0, 0, 0, 0.26);
+  border-radius: 3px;
+}
+
+input:focus {
+  border: thin solid rgba(0, 0, 0, 0.35);
+  outline: none;
+}
+
+/* RESPONSIVE LAYOUT
+   ========================================================================== */
+.container {
+  max-height: 667px;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media (min-width: 544px) {
+  .container {
+    max-width: 576px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 750px;
+  }
+
+  .inputContainer,
+  .messageContainer {
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 970px;
+  }
+
+  .messageContainer,
+  .inputContainer {
+    max-width: 65%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1170px;
+  }
+
+  .messageContainer,
+  .inputContainer {
+    max-width: 50%;
+  }
+}
+
+.container:before,
+.container:after {
+  display: table;
+  content: " ";
+}
+
+.container:after,
+.row:after {
+  clear: both;
+}
+
+/* Colors and Shadows
+   ========================================================================== */
+.boxShadow {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+  0 3px 1px -2px rgba(0, 0, 0, 0.2),
+  0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.raised {
+  background: rgba(158, 158, 158, 0.20);
+  composes: boxShadow;
+}
+
+.icon {
+  font-family: Roboto, sans-serif;
+  text-transform: uppercase;
+  color: #ffffff;
+  border-radius: 50%;
+}
