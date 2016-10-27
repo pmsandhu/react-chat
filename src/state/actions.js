@@ -3,7 +3,7 @@ import { v4 } from 'node-uuid'
 import { date } from 'utils'
 
 export function sendMessage(message, name, color) {
-  const payload = { id: v4(), date: date(), message, name, color }
+  const payload = {id: v4(), date: date(), message, name, color}
   return {
     type: SEND_MESSAGE,
     payload

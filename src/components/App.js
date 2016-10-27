@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <main className={styles.container}>
-        <SetName ref="dialog"/>
+        <SetName ref="dialog" />
         <Header />
         <MessageList />
         <Input />

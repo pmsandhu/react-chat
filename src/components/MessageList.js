@@ -9,12 +9,10 @@ class MessageList extends Component {
     node.scrollTop = node.scrollHeight - node.offsetHeight
   }
   render() {
-    const { chats } = this.props
+    const {chats} = this.props
     return (
-      <div ref="container" className={ styles.list }>
-        {chats.map(item =>
-          <Message key={ item.id } { ...item } />
-        )}
+      <div ref="container" className={styles.list}>
+        {chats.map(item =><Message key={item.id} {...item} />)}
       </div>
     )
   }

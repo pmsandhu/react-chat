@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import styles from 'header.css'
 
-const Header = ({ name, color }) => (
+const Header = ({name, color}) => (
   <header className={styles.header}>
-   <span className={ styles.icon } style={ color }>{ }</span>
+   <span className={styles.icon} style={color}>{ }</span>
    <span className={styles.identity}>{name}</span>
   </header>
 )

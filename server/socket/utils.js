@@ -13,12 +13,12 @@ export const colors = {
   }
 }
 
-export const getTime = () => {
-  let hour = new Date().getHours()
-  let minutes = new Date().getMinutes()
-  minutes < 10 ?
-    minutes = '0' + minutes :
-    minutes
+export const getTime = (date) => {
+  let hour= date.getHours()
+  let minutes = date.getMinutes()
+  if (minutes < 10) {
+    minutes= '0' + minutes
+  }
   if (hour > 12) {
     return `${hour - 12}:${minutes} PM`
   }
@@ -26,5 +26,5 @@ export const getTime = () => {
 }
 
 export const stringify = (type, payload) => {
-  return JSON.stringify({ type, payload })
+  return JSON.stringify({type, payload})
 }
