@@ -11,7 +11,6 @@ import connection from './socket/manager'
 const compiler = webpack(webpackConfig)
 const app = express()
 
-
 const middleware = webpackMiddleware(compiler, base.serverOptions)
 app.use(middleware)
 app.use(webpackHotMiddleware(compiler))
@@ -19,5 +18,7 @@ app.use(webpackHotMiddleware(compiler))
 const server = http.createServer(app).listen(base.port)
 console.log('server listening on port: %s', base.port)
 
-export const wss = new ws.Server({ server })
+const wss = new ws.Server({ server })
 wss.on('connection', connection)
+
+export default wss

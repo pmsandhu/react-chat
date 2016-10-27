@@ -18,14 +18,14 @@ const base = {
     'src/styles',
   ],
   vendor: [
-    'react'
-  ]
+    'react',
+  ],
 }
 
 base.module_dirs = [
   base.node_modules,
   base.src,
-  ...base.src_modules
+  ...base.src_modules,
 ]
 
 base.globals = {
@@ -48,8 +48,8 @@ base.serverOptions = {
   stats: {
     colors: true,
     chunks: false,
-    chunkModules: false
-  }
+    chunkModules: false,
+  },
 }
 
 base.browsers = [
@@ -64,7 +64,7 @@ base.browsers = [
 ]
 
 base.vendor =
-  base.vendor.filter(dep => {
+  base.vendor.filter((dep) => {
     if (require('../../package.json').dependencies[dep]) {
       return true
     }

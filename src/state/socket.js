@@ -8,14 +8,14 @@ export const listeners = (store) => {
     socket = new WebSocket(`${HOST}/query?token=${v4()}`)
   }
 
-  socket.onmessage = message => {
+  socket.onmessage = (message) => {
     if (typeof message === 'string') return
     const parsed = JSON.parse(message.data)
     store.dispatch(parsed)
   }
 }
 
-export const emitters = (store) => (next) => (action) => {
+export const emitters = store => next => (action) => {
   const result = next(action)
   console.log(socket.readyState)
   socket.send(JSON.stringify(result))

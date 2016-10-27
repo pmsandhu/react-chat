@@ -9,10 +9,10 @@ class MessageList extends Component {
     node.scrollTop = node.scrollHeight - node.offsetHeight
   }
   render() {
-    const {chats} = this.props
+    const { chats } = this.props
     return (
       <div ref="container" className={styles.list}>
-        {chats.map(item =><Message key={item.id} {...item} />)}
+        {chats.map(item => <Message key={item.id} {...item} />)}
       </div>
     )
   }
@@ -24,7 +24,7 @@ MessageList.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    chats: state.chats
+    chats: state.chats,
   }
 }
 

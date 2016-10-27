@@ -42,7 +42,8 @@
   },
   "scripts": {
     "start": "concurrent --kill-others \"better-npm-run start:watch\" ",
-    "dev": "concurrent --kill-others \"better-npm-run dev:watch\" "
+    "dev": "concurrent --kill-others \"better-npm-run dev:watch\" ",
+    "lint": "eslint server --fix"
   },
   "betterScripts": {
     "dev:watch": {

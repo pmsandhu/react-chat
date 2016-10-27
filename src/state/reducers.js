@@ -24,10 +24,10 @@ function name(state = 'DEFAULT', action) {
   }
 }
 
-function color(state = {backgroundColor: '#4F5B66'}, action) {
+function color(state = { backgroundColor: '#4F5B66' }, action) {
   switch (action.type) {
     case RECEIVE_COLOR:
-      return {...state, backgroundColor: action.payload}
+      return { ...state, backgroundColor: action.payload }
     default:
       return state
   }
@@ -36,9 +36,8 @@ function color(state = {backgroundColor: '#4F5B66'}, action) {
 const reducer = combineReducers({
   chats,
   name,
-  color
+  color,
 })
 
 export default reducer
-
 

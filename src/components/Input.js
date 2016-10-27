@@ -3,16 +3,17 @@ import { connect } from 'react-redux'
 import styles from 'input.css'
 import { sendMessage } from 'actions'
 
-const Input = ({dispatch, name, color}) => {
+const Input = ({ dispatch, name, color }) => {
   let message
   return (
-    <form className={styles.form} onSubmit={e => {
+    <form className={styles.form} onSubmit={(e) => {
       e.preventDefault()
       if (!message.value) return
       dispatch(sendMessage(message.value, name, color))
       message.value = ''
-    }}>
-      <input className={styles.input} ref={node => {message = node}} placeholder="Type a message..." />
+    }}
+    >
+      <input className={styles.input} ref={(node) => { message = node }} placeholder="Type a message..." />
       <button className={styles.button} type="submit">SEND</button>
     </form>
   )
@@ -21,13 +22,13 @@ const Input = ({dispatch, name, color}) => {
 Input.propTypes = {
   dispatch: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
-  color: PropTypes.object.isRequired
+  color: PropTypes.object.isRequired,
 }
 
 function mapStateToProps(state) {
   return {
     name: state.name,
-    color: state.color
+    color: state.color,
   }
 }
 

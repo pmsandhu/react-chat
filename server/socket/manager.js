@@ -1,9 +1,9 @@
 import url from 'url'
-import { wss } from '../server'
-import {colors, stringify, getTime} from './utils'
+import wss from '../server'
+import { colors, stringify, getTime } from './utils'
 
-let store = []
-let online = {}
+const store = []
+const online = {}
 
 function connection(ws) {
   const location = url.parse(ws.upgradeReq.url, true)
@@ -11,11 +11,11 @@ function connection(ws) {
 
   if (len) {
     len > 15 ?
-      ws.send(stringify('MESSAGE_HISTORY', store.slice(len - 15, len)))
-    : ws.send(stringify('MESSAGE_HISTORY', store))
+      ws.send(stringify('MESSAGE_HISTORY', store.slice(len - 15, len))) :
+      ws.send(stringify('MESSAGE_HISTORY', store))
   }
 
-  ws.on('message', message => {
+  ws.on('message', (message) => {
     const action = JSON.parse(message)
     switch (action.type) {
       case 'SET_NAME':
@@ -39,24 +39,23 @@ function connection(ws) {
     broadcast(id, JSON.stringify(online[id]))
     delete online[id]
   })
-
 }
 
-function addToOnline(action, color, url) {
+function addToOnline(action, color, upgradeUrl) {
   return {
     type: 'RECEIVE_MESSAGE',
     payload: {
-      id: url.split('=')[1],
+      id: upgradeUrl.split('=')[1],
       name: action.payload,
       message: `${action.payload} LEFT`,
       clientLeft: true,
-      color: {backgroundColor: color}
-    }
+      color: { backgroundColor: color },
+    },
   }
 }
 
 function broadcast(selfId, message) {
-  wss.clients.forEach(ws=> {
+  wss.clients.forEach((ws) => {
     if (ws.upgradeReq.url !== selfId) {
       ws.send(message)
     }

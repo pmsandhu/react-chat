@@ -10,31 +10,31 @@ const webpackConfig = {
   resolve: {
     root: paths.basePath(base.src),
     modulesDirectories: base.module_dirs,
-    extensions: ['', '.js', '.json']
+    extensions: ['', '.js', '.json'],
   },
-  module: {}
+  module: {},
 }
 
 webpackConfig.entry = {
   index: [
     'webpack-hot-middleware/client?reload=true',
-    `${paths.basePath(base.entry)}\/index.js`
+    `${paths.basePath(base.entry)}/index.js`,
   ],
-  vendor: base.vendor
+  vendor: base.vendor,
 }
 
 webpackConfig.output = {
   path: paths.basePath(base.build),
   publicPath: '/',
-  filename: `[name].js`,
-  chunkFilename: '[name].js'
+  filename: '[name].js',
+  chunkFilename: '[name].js',
 }
 
 webpackConfig.plugins = [
   new HtmlWebpackPlugin({
     filename: 'index.html',
     inject: 'body',
-    template: `${paths.basePath(base.entry)}\/index.html`,
+    template: `${paths.basePath(base.entry)}/index.html`,
   }),
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.HotModuleReplacementPlugin(),
@@ -48,7 +48,9 @@ webpackConfig.module.loaders = [
     loaders: [
       'style?sourceMap',
       'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-      'postcss-loader'] }
+      'postcss-loader'
+    ]
+  },
 ]
 
 webpackConfig.postcss = [

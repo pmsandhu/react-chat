@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import styles from 'message.css'
 
-const Message = ({id, date, name, color, message, clientLeft = null}) => {
+const Message = ({ id, date, name, color, message, clientLeft = null }) => {
   if (clientLeft) {
     return <div><span style={color} className={styles.left}>{message} @ {date}</span></div>
   }
@@ -20,7 +20,7 @@ Message.propTypes = {
   date: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   color: PropTypes.object.isRequired,
-  message: PropTypes.string.isRequired
+  message: PropTypes.string.isRequired,
 }
 
 export default Message
