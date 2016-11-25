@@ -1,8 +1,6 @@
 /* HTML Elements Defaults
    ========================================================================== */
-/**
- * NOTE: Cannot use css-loader composes syntax with HTML tag elements : (
- */
+/* NOTE: Cannot use css-loader composes syntax with HTML tag elements */
 body,
 html {
   font-family: Roboto, sans-serif;
