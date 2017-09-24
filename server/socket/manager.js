@@ -1,64 +1,59 @@
 import url from 'url'
 import wss from '../server'
-import { colors, stringify, getTime } from './utils'
+import { colors, stringify } from './utils'
 
-const store = []
+const chatMessages = []
 const online = {}
 
 function connection(ws) {
-  const location = url.parse(ws.upgradeReq.url, true)
-  const len = store.length
+  const [, id] = url.parse(ws.upgradeReq.url, true).path.split('=')
+  const { length } = chatMessages
 
-  if (len) {
-    len > 15 ?
-      ws.send(stringify('MESSAGE_HISTORY', store.slice(len - 15, len))) :
-      ws.send(stringify('MESSAGE_HISTORY', store))
-  }
+  if (length)
+    length > 15
+      ? ws.send(stringify('MESSAGE_HISTORY', chatMessages.slice(length - 15, length)))
+      : ws.send(stringify('MESSAGE_HISTORY', chatMessages))
 
-  ws.on('message', (message) => {
+  ws.on('message', message => {
     const action = JSON.parse(message)
-    switch (action.type) {
+    switch(action.type) {
       case 'SET_NAME':
         const color = colors.assign()
-        online[ws.upgradeReq.url] = addToOnline(action, color, ws.upgradeReq.url)
+        online[id] = addToOnline(action, color, id)
+        console.log(online)
         return ws.send(stringify('RECEIVE_COLOR', color))
       case 'SEND_MESSAGE':
-        store.push(action.payload)
-        return broadcast(ws.upgradeReq.url, stringify('RECEIVE_MESSAGE', action.payload))
+        chatMessages.push(action.payload)
+        return broadcast(id, stringify('RECEIVE_MESSAGE', action.payload))
       default:
-        return
     }
   })
 
   ws.on('close', () => {
-    const id = location.path
-    if (!Object.keys(online).length) return
-    if (online[id] === undefined) return
-    online[id].payload.date = getTime(new Date())
-    store.push(online[id].payload)
+    if (!Object.keys(online).length || !online[id]) return
+
+    online[id].payload.date = new Date().toLocaleTimeString('en-us', { hour: '2-digit', minute: '2-digit' })
+    chatMessages.push(online[id].payload)
     broadcast(id, JSON.stringify(online[id]))
     delete online[id]
   })
 }
 
-function addToOnline(action, color, upgradeUrl) {
-  return {
-    type: 'RECEIVE_MESSAGE',
-    payload: {
-      id: upgradeUrl.split('=')[1],
-      name: action.payload,
-      message: `${action.payload} LEFT`,
-      clientLeft: true,
-      color: { backgroundColor: color },
-    },
+const addToOnline = (action, color, id) => ({
+  type: 'RECEIVE_MESSAGE',
+  payload: {
+    id,
+    name: action.payload,
+    message: `${action.payload} LEFT`,
+    clientLeft: true,
+    color: { backgroundColor: color },
+    date: ''
   }
-}
+})
 
 function broadcast(selfId, message) {
-  wss.clients.forEach((ws) => {
-    if (ws.upgradeReq.url !== selfId) {
-      ws.send(message)
-    }
+  wss.clients.forEach(val => {
+    if (val.upgradeReq.url !== selfId) val.send(message)
   })
 }
 
